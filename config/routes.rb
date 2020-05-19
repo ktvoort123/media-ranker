@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root to: "homepages#index"
 
-  get 'homepages/index'
-  root to: "works#index"
+  resources :homepages, only: [:index]
   resources :users
   resources :votes
   resources :works
