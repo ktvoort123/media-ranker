@@ -3,6 +3,6 @@
 
 
 <% @works.each do |work|%>
-  <p><strong>Title:</strong> <%=work.title%>, <strong>Category:</strong> <%=work.category%></p>
+  <p><strong>Title:</strong> <%= link_to work.title, work_path(work.id)%>, <strong>Category:</strong> <%=work.category%></p>
 <%end%>
 
