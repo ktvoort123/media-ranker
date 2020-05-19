@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'works/index'
-  get 'works/show'
-  get 'users/index'
-  get 'users/show'
+  root to: "works#index"
   resources :users
   resources :votes
   resources :works
