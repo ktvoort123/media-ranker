@@ -1,7 +1,3 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
-
-
 <% @works.each do |work|%>
   <p><strong>Title:</strong> <%= link_to work.title, work_path(work.id)%>, <strong>Category:</strong> <%=work.category%></p>
 <%end%>

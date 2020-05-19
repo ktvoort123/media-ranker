@@ -1,0 +1,33 @@
+<h2>Add a new work:</h2>
+
+<%= form_with model: @work, class:'create-work' do |f| %>
+
+  <section>
+    <%= f.label :category %>
+    <%= f.select :category, [[nil,nil],[:movie,:movie],[:album,:album],[:book,:book]] %>
+  </section>
+
+  <section>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </section>
+
+  <section>
+    <%= f.label :creator %>
+    <%= f.text_field :creator %>
+  </section>
+
+  <section>
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year %>
+  </section>
+
+  <section>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </section>
+
+  <%= f.submit "Create Work", class: "work-button"%>
+
+<%end%>
+
