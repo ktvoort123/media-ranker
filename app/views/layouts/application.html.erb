@@ -22,13 +22,16 @@
         <li class="nav-item app-header__nav_item"><%= link_to "View all users", users_path %></li>
       </ul>
       <%if session[:user_id].nil?%>
-        <%= link_to "Log In", login_path %>
-        <%else%>
-        <p>current user is <%=User.find_by(id: session[:user_id]).username%></p>
-        <%= link_to "Log Out", logout_path, method: "post" %>
+        <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+      <%else%>
+        <%user = User.find_by(id: session[:user_id])%>
+        <%= link_to "Logged in as #{user.username}", user_path(user.id), class: "btn btn-primary"%>
+
+        <%= link_to "Log Out", logout_path, method: "post", class: "btn btn-primary" %>
         <%end%>
     </nav>
   </header>
+
 
   <body>
     <section class="flash-msg__section">

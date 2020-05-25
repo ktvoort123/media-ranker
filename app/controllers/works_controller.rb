@@ -23,7 +23,6 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "Something happened. Work not added."
       render :new, status: :bad_request
       return
     end

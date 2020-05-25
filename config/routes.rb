@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :homepages, only: [:index]
   resources :users
   resources :votes
-  resources :works
+  # resources :works
+  resources :works do 
+    resources :votes, only: [:create]
+  end
+
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"

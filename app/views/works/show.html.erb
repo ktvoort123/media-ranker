@@ -6,6 +6,6 @@
 
 <%=link_to "Edit", edit_work_path(@work.id)%>
 <%= link_to "Delete", work_path(@work.id), method: :delete%>
-
+<%= link_to "Vote", work_votes_path(@work.id), method: :post%>
 
 <p>Votes will go here!</p>
