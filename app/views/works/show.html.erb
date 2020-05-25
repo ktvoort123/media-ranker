@@ -8,4 +8,23 @@
 <%= link_to "Delete", work_path(@work.id), method: :delete%>
 <%= link_to "Vote", work_votes_path(@work.id), method: :post%>
 
-<p>Votes will go here!</p>
+<h3><%=@work.num_votes%> Votes for this <%=@work.category.capitalize%></h3>
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= link_to vote.user.username, user_path(vote.user.id)%></td>
+        <td><%=vote.created_at.strftime('%B %d, %Y')%></td>
+      </tr> 
+    <% end %>
+  </tbody>
+
+</table>

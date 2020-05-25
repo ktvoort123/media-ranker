@@ -10,10 +10,10 @@ class VotesController < ApplicationController
       redirect_to work_path(work.id)
       return
     else
-      flash.now[:error] = "Something happened. Vote not added."
-      render :new, status: :bad_request
+      flash[:error] = "Something happened. Vote not added."
+      redirect_to work_path(work.id)
       return
     end
   end
-  
+
 end
