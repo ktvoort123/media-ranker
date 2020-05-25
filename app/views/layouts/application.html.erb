@@ -21,7 +21,12 @@
         <li class="nav-item app-header__nav_item"><%= link_to "Add a new work", new_work_path %></li>
         <li class="nav-item app-header__nav_item"><%= link_to "View all users", users_path %></li>
       </ul>
-      <%= link_to "Log In", login_path %>
+      <%if session[:user_id].nil?%>
+        <%= link_to "Log In", login_path %>
+        <%else%>
+        <p>current user is <%=User.find_by(id: session[:user_id]).username%></p>
+        <%= link_to "Log Out", logout_path, method: "post" %>
+        <%end%>
     </nav>
   </header>
 
