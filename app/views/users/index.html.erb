@@ -1,4 +1,23 @@
-<% @users.each do |user|%>
-  <p>Name: <%=user.username%></p>
-  <p>Join Date: <%=user.date_joined%> </p>
-<%end%>
+<h2>List of Users</h2>
+
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Votes</th>
+      <th>Joined</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user_path(user.id)%></td>
+        <td>Votes #</td>
+        <td><%=user.date_joined%></td>
+      </tr> 
+    <% end %>
+  </tbody>
+
+</table>

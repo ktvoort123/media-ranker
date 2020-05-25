@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      head :not_found
+      return
+    end
   end
 
   def login_form
@@ -18,7 +23,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as returning user #{username}"
     else
-      user = User.create(username: username)
+      user = User.create(username: username, date_joined: Date.today)
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as new user #{username}"
     end
