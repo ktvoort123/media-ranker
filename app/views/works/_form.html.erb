@@ -7,34 +7,35 @@
     <% end %>
   </ul>
 <% end %>
+<section>
+  <%= form_with model: @work, class:'work-form' do |f| %>
 
-<%= form_with model: @work, class:'work-form' do |f| %>
+    <section class="form-group">
+      <%= f.label :category %>
+      <%= f.select :category, [[nil,nil],[:movie,:movie],[:album,:album],[:book,:book]],{}, class: "form-control"  %>
+    </section>
 
-  <section>
-    <%= f.label :category %>
-    <%= f.select :category, [[nil,nil],[:movie,:movie],[:album,:album],[:book,:book]] %>
-  </section>
+    <section class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </section>
 
-  <section>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </section>
+    <section class="form-group">
+      <%= f.label :creator %>
+      <%= f.text_field :creator, class: "form-control"  %>
+    </section>
 
-  <section>
-    <%= f.label :creator %>
-    <%= f.text_field :creator %>
-  </section>
+    <section class="form-group">
+      <%= f.label :publication_year %>
+      <%= f.text_field :publication_year, class: "form-control"  %>
+    </section>
 
-  <section>
-    <%= f.label :publication_year %>
-    <%= f.text_field :publication_year %>
-  </section>
+    <section class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control"  %>
+    </section>
 
-  <section>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </section>
+    <%= f.submit action_name, class: "btn btn-primary"%>
 
-  <%= f.submit action_name, class: "work-button"%>
-
-<%end%>
+  <%end%>
+</section>
