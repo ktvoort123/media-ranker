@@ -7,11 +7,11 @@ class VotesController < ApplicationController
         
     if vote.save
       flash[:success] = "Successfully upvoted!"
-      redirect_to work_path(work.id)
+      redirect_back(fallback_location: root_path)
       return
     else
       flash[:error] = "Something happened. Vote not added."
-      redirect_to work_path(work.id)
+      redirect_back(fallback_location: root_path)
       return
     end
   end
