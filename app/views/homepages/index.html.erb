@@ -3,22 +3,22 @@
     <span class="spotlight__header--prefix">
       Media Spotlight
     </span>
-    <%= link_to @samp_work.title, work_path(@samp_work.id),  class: "spotlight__link-to"%>
+    <%= link_to @top_work.title, work_path(@top_work.id),  class: "spotlight__link-to"%>
     by
-    <%= @samp_work.creator%>
+    <%= @top_work.creator%>
   </h2>
 </section>
 
 
 
-<%[{name: "Albums", list: @albums},{name: "Books", list: @books},{name: "Movies", list: @movies}].each do |category| %>
+<%["album","book","movie"].each do |category| %>
+
   <div>
-    <h2>Top <%=category[:name]%></h2>
-    <% category[:list].each do |work|%>
+    <h2>Top <%=category.capitalize%>s</h2>
+    <% @works.top_ten(category).each do |work|%>
       <h4><%= link_to work.title, work_path(work.id)%> <small class="top-ten__creator">by <%=work.creator%></small></h4>
       <p><%=work.num_votes%> Votes</p>
     <%end%>
   </div>
 <%end%>
-
 
