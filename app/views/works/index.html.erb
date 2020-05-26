@@ -1,7 +1,10 @@
 <h2>List of Works</h2>
 
+
+<%["album","book","movie"].each do |category| %>
+
 <section class='media-table'>
-  <h4>Albums</h4>
+  <h4><%=category.capitalize%>s</h4>
   <table class="table">
   
     <thead>
@@ -15,7 +18,7 @@
     </thead>
 
     <tbody>
-      <% @works.where(category: 'album').order("created_at DESC").each do |work| %>
+      <% @works.where(category: category).sort_by{|work| work.num_votes}.reverse.each do |work| %>
         <tr>
           <td><%=work.num_votes%></td>
           <td><%= link_to work.title, work_path(work.id)%></td>
@@ -29,64 +32,7 @@
   </table>
 </section>
 
-
-<section class='media-table'>
-  <h4>Books</h4>
-  <table class="table">
-  
-    <thead>
-      <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @works.where(category: 'book').order("created_at DESC").each do |work| %>
-        <tr>
-          <td><%=work.num_votes%></td>
-          <td><%= link_to work.title, work_path(work.id)%></td>
-          <td><%=work.creator%></td>
-          <td><%=work.publication_year%></td>
-          <td>Upvote</td> 
-        </tr> 
-      <% end %>
-    </tbody>
-
-  </table>
-</section>
-
-<section class='media-table'>
-  <h4>Movies</h4>
-  <table class="table">
-
-    <thead>
-      <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @works.where(category: 'movie').order("created_at DESC").each do |work| %>
-        <tr>
-          <td><%=work.num_votes%></td>
-          <td><%= link_to work.title, work_path(work.id)%></td>
-          <td><%=work.creator%></td>
-          <td><%=work.publication_year%></td>
-          <td>Upvote</td> 
-        </tr> 
-      <% end %>
-    </tbody>
-
-  </table>
-</section>
+<%end%>
 
 
 <%= link_to "View top media", root_path, class: "btn btn-secondary" %>

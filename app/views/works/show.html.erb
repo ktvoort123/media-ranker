@@ -4,9 +4,10 @@
 
 <p><%=@work.description%></p>
 
-<%=link_to "Edit", edit_work_path(@work.id)%>
-<%= link_to "Delete", work_path(@work.id), method: :delete%>
-<%= link_to "Vote", work_votes_path(@work.id), method: :post%>
+<%=link_to "Back to media ranks", works_path, class: "btn btn-primary"%>
+<%=link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary"%>
+<%= link_to "Vote", work_votes_path(@work.id), method: :post, class: "btn btn-primary"%>
+<%= link_to "Delete", work_path(@work.id), method: :delete, class: "btn btn-danger"%>
 
 <h3><%=@work.num_votes%> Votes for this <%=@work.category.capitalize%></h3>
 <table class="table">

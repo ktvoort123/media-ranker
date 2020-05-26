@@ -13,7 +13,7 @@ class Work < ApplicationRecord
   end
 
 
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   validates :category, presence: true
   validates :title, presence: true, uniqueness: {scope: :category}
