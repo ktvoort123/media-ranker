@@ -9,23 +9,16 @@
   </h2>
 </section>
 
-<div class="albums">
-  <h2>Top Albums</h2>
-  <% @albums.each do |work|%>
-    <p><strong>Title:</strong> <%= link_to work.title, work_path(work.id)%>, <strong>Category:</strong> <%=work.category%></p>
-  <%end%>
-</div>
 
-<div class="books">
-  <h2>Top Books</h2>
-  <% @books.each do |work|%>
-    <p><strong>Title:</strong> <%= link_to work.title, work_path(work.id)%>, <strong>Category:</strong> <%=work.category%></p>
-  <%end%>
-</div>
 
-<div class="movies">
-  <h2>Top Movies</h2>
-  <% @movies.each do |work|%>
-    <p><strong>Title:</strong> <%= link_to work.title, work_path(work.id)%>, <strong>Category:</strong> <%=work.category%></p>
-  <%end%>
-</div>
+<%[{name: "Albums", list: @albums},{name: "Books", list: @books},{name: "Movies", list: @movies}].each do |category| %>
+  <div>
+    <h2>Top <%=category[:name]%></h2>
+    <% category[:list].each do |work|%>
+      <h4><%= link_to work.title, work_path(work.id)%> <small class="top-ten__creator">by <%=work.creator%></small></h4>
+      <p><%=work.num_votes%> Votes</p>
+    <%end%>
+  </div>
+<%end%>
+
+
