@@ -73,7 +73,9 @@ describe User do
     it "can have many votes" do
       user = users(:katie)
       expect(user.votes.count).must_equal 2
+
     end
+
   end
 end
 
