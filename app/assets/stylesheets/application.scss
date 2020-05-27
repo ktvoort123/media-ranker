@@ -196,7 +196,6 @@ hr {
 
 table {
   display: table;
-  border-collapse: separate;
   box-sizing: border-box;
   border-spacing: 2px;
   border-color: grey;
@@ -261,4 +260,11 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+a:hover  { 
+  text-decoration:none; 
+}
+.form-group {
+  margin-bottom: 1rem;
 }

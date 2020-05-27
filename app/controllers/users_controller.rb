@@ -22,19 +22,26 @@ class UsersController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as returning user #{username}"
-    else
+      redirect_to root_path
+      return
+    elsif User.new(username: username, date_joined: Date.today).valid?
       user = User.create(username: username, date_joined: Date.today)
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as new user #{username}"
+      redirect_to root_path
+      return
+    else
+      flash[:warning] = "Unable to login: username must not be empty"
+      redirect_to login_path
+      return
     end
   
-    redirect_to root_path
-    return
+
   end
 
   def logout
     session[:user_id] = nil
-  
+    flash[:success] = "Successfully logged out."
     redirect_to root_path
     return
   end
