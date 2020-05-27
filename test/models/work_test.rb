@@ -77,8 +77,16 @@ describe Work do
       end
 
       expect(work.num_votes).must_equal list_users.length
-
     end
+
+    it "work_with_most_votes returns correct number of votes" do
+      expect(Work.work_with_most_votes).must_equal works(:old)
+    end
+
+    it "top_ten returns list even with less than ten items" do
+      expect(Work.top_ten("movie")).must_equal [works(:harry1),works(:titanic)]
+    end
+
   end
 
   describe 'relations' do
