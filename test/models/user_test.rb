@@ -55,33 +55,26 @@ describe User do
     end
 
   end
+  
+  describe 'custom methods' do
+    it "num_votes returns correct number of votes" do
+      user = User.new(username: 'test user1', date_joined: Date.today)
+      list_works = [:titanic,:harry1,:old,:poodr]
+      list_works.each do |work|
+        Vote.create(user: user, work: works(work))
+      end
 
-  # describe 'relations' do
-  #   it "has a user" do
-  #     vote = votes(:vote1)
-  #     expect(vote.user).must_equal users(:katie)
-  #   end
+      expect(user.num_votes).must_equal list_works.length
 
-  #   it "can set the user" do
-  #     work = works(:old)
-  #     vote = Vote.new(work: work)
-  #     vote.user = users(:chelsea)
-  #     expect(vote.user_id).must_equal users(:chelsea).id
-  #   end
+    end
+  end
 
-  #   it "has a work" do
-  #     vote = votes(:vote2)
-  #     expect(vote.work).must_equal works(:old)
-  #   end
-
-  #   it "can set the work" do
-  #     user = users(:katie)
-  #     vote = Vote.new(user: user)
-  #     vote.work = works(:harry1)
-  #     expect(vote.work_id).must_equal works(:harry1).id
-  #   end
-
-  # end
+  describe 'relations' do
+    it "can have many votes" do
+      user = users(:katie)
+      expect(user.votes.count).must_equal 2
+    end
+  end
 end
 
 
